@@ -1,7 +1,9 @@
 def main():
     score =float(input("Please enter your score: "))
     grade = grade_classifier(score)
-    print(f"Grade:{grade}")
+    feedback = get_feedback(grade)
+    print(f"Grade: {grade}")
+    print(f"Your Feedback is: {feedback}")
 
 def grade_classifier(score):
     if score < 0 or score > 100:
@@ -23,5 +25,17 @@ def grade_classifier(score):
     elif score<=100:
         return "A++"
     
+def get_feedback(grade):
+    feedback = {
+        "A": "Excellent work!",
+        "B": "Good job, keep it up!",
+        "C": "Decent, but room to improve.",
+        "D": "You need to put in more effort.",
+        "F": "Needs serious improvement.",
+        "Invalid score": "Please enter a score between 0 and 100."
+    }
+    return feedback.get(grade)
+
+
 if __name__=="__main__":
     main()
