@@ -6,7 +6,7 @@ def main():
     if top_words is None:
         print("Please enter correct filepath.")
         return
-    print("Top Words: ")
+    print("Top Words are :-  ")
     for word,count in top_words:
         print(f'{word}: {count}')
 

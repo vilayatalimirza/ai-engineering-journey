@@ -16,4 +16,5 @@ def get_int():
         else:
             return number    
 
-main()
+if __name__ == "__main__":
+    main()
