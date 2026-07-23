@@ -38,4 +38,5 @@ def meow4(n):
 def meow5(n):
     print("meow\n" * n,end="")
 
-main()
+if __name__ == "__main__":
+    main()

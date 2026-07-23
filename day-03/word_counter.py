@@ -15,5 +15,5 @@ def print_frequency(frequency):
     for word,count in frequency.items():
         print(f'Word \'{word}\' appears \'{count}\' number of times.')
 
-main()
-
+if __name__ == "__main__":
+    main()
