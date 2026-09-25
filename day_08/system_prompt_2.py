@@ -20,7 +20,7 @@ Never:
 
 def chat_loop():
     chat = client.chats.create(
-        model="gemini-3.8-flash",
+        model="gemini-3.1-flash-lite",
         config={"system_instruction": SYSTEM_PROMPT}
     )
     print("Engineer bot ready. Type 'quit' to exit, 'clear' to reset memory.\n")
