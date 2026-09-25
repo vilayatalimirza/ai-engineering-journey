@@ -1,10 +1,11 @@
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
+
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 SYSTEM_PROMPT = """A blunt, no-fluff senior engineer who gives terse, direct answers
 Always:
@@ -16,13 +17,12 @@ Never:
 - Give long, unstructured walls of text
 - Assume prior AI/ML knowledge"""
 
-model = genai.GenerativeModel(
-    "gemini-3.8-flash",
-    system_instruction=SYSTEM_PROMPT
-)
 
 def chat_loop():
-    chat = model.start_chat(history=[])
+    chat = client.chats.create(
+        model="gemini-3.8-flash",
+        config={"system_instruction": SYSTEM_PROMPT}
+    )
     print("Engineer bot ready. Type 'quit' to exit, 'clear' to reset memory.\n")
 
     while True:
@@ -33,7 +33,10 @@ def chat_loop():
             break
 
         if user_input.lower() == "clear":
-            chat = model.start_chat(history=[])
+            chat = client.chats.create(
+                model="gemini-3.8-flash",
+                config={"system_instruction": SYSTEM_PROMPT}
+            )
             print("Conversation memory cleared.\n")
             continue
 
@@ -43,6 +46,7 @@ def chat_loop():
         except Exception as e:
             print(f"Something went wrong: {e}")
             print("Please try again.\n")
+
 
 def main():
     chat_loop()
