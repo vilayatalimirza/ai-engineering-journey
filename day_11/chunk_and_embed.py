@@ -10,7 +10,7 @@ def read_document(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
         return f.read()
 
-def chunk_text(text, chunk_size=5, overlap=2):
+def chunk_text(text, chunk_size=500, overlap=50):
     chunks = []
     start = 0
     while start < len(text):

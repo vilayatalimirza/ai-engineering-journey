@@ -79,7 +79,7 @@ def run_interview():
     try:
         response = chat.send_message("Start the interview.")
     except Exception as e:
-        print(f"Something went wrong starting the interview: {e}")
+        print(f"Something went wrong while starting the interview: {e}")
         return ""
 
     print(f"Bot: {response.text}\n")
